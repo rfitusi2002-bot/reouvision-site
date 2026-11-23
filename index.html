@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ראובן פיטוסי · עורך וידאו בכיר</title>
+<meta name="description" content="ראובן פיטוסי – עורך וידאו בכיר. סרטים קצרים, תיעוד, טלוויזיה וכתבות.">
+<link rel="icon" href="assets/symbol.svg" type="image/svg+xml">
+<meta property="og:title" content="ראובן פיטוסי · עורך וידאו בכיר">
+<meta property="og:description" content="סרטים קצרים, תיעוד, טלוויזיה ושואורילים.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+/*
+VOICE: עורך בכיר – שקט, בטוח, בלי למכור. כמו אתר של חברת עריכה.
+IDEA: אינדקס עבודות. השמות הם האתר; התמונה מופיעה רק כשמצביעים על עבודה.
+PICTURE: פריים מהעבודה שצף ליד הסמן (בנגיעה במובייל – נפתח).
+COLOUR+TYPE: נייר #F7F5FB, דיו #151126, הדגשה אחת #6A5ACD. עברית Segoe/Arial, תוויות אנגלית Space Grotesk.
+LAYOUT: יישור לימין, שורות ברוחב מלא, שלוש עמודות: שם / סוג / תפקיד. החלפה לרשת.
+*/
+:root{--paper:#F7F5FB;--ink:#151126;--ink2:#211A36;--accent:#6A5ACD;--mute:#6B6580;--rule:#DCD7E8;
+--he:"Segoe UI",Arial,sans-serif;--en:"Space Grotesk","Segoe UI",Arial,sans-serif;--g:clamp(20px,5vw,72px)}
+*{box-sizing:border-box;margin:0;padding:0;min-width:0}
+body{font-family:var(--he);background:var(--paper);color:var(--ink);line-height:1.55;overflow-x:clip;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+.en{font-family:var(--en);font-weight:500}
+
+header{position:absolute;inset:0 0 auto 0;z-index:5;display:flex;justify-content:space-between;align-items:center;padding:24px var(--g);color:#fff}
+.mark{display:flex;align-items:center;gap:12px;text-decoration:none}
+.mark img{width:34px}
+.mark .wmk{width:auto;height:19px}
+header nav{display:flex;gap:28px;font-size:15px}
+header nav a{text-decoration:none;color:#B8B1D3}
+header nav a:hover{color:#fff}
+
+
+/* פתיח: טיפוגרפיה קינטית שנחתכת כמו עריכה (24 פריימים לשנייה) */
+.hero{position:relative;height:100svh;min-height:560px;background:var(--ink);color:#fff;overflow:hidden;display:grid;align-content:end;padding:0 var(--g) clamp(40px,7vh,80px)}
+.shot{position:absolute;inset:0;display:grid;place-items:center;padding:0 var(--g);pointer-events:none}
+.shot span{font-weight:900;font-size:clamp(72px,17vw,280px);line-height:.9;letter-spacing:-.035em;white-space:nowrap}
+.shot span{animation:push .5s cubic-bezier(.2,.8,.2,1) both}
+@keyframes push{from{transform:scale(1.12)}to{transform:none}}
+.shot.s-out span{color:transparent;-webkit-text-stroke:2px #fff}
+.shot.s-small span{font-size:clamp(40px,7vw,110px)}
+.shot.s-right{place-items:center end}
+.shot.s-left{place-items:center start}
+.title{position:relative;opacity:0}
+.title.on{opacity:1}
+.title h1{font-weight:900;font-size:clamp(54px,9.5vw,150px);line-height:.92;letter-spacing:-.03em}
+.title h1 .ln{display:block;overflow:hidden;padding-bottom:.06em}
+.title h1 .ch{display:inline-block;transform:translateY(105%)}
+.title.on h1 .ch{transform:none;transition:transform .7s cubic-bezier(.16,1,.3,1);transition-delay:calc(var(--d)*28ms)}
+.title .row{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-top:28px;font-size:clamp(17px,1.6vw,21px);color:#B8B1D3;opacity:0;transform:translateY(12px);transition:opacity .6s ease .9s,transform .6s ease .9s}
+.title.on .row{opacity:1;transform:none}
+.title .row a{color:#fff;text-decoration:none;border-bottom:1px solid #6E6790;padding-bottom:2px}
+.tcode{position:absolute;top:50%;left:var(--g);transform:translateY(-50%);font-family:var(--en);font-size:13px;color:#6E6790;font-variant-numeric:tabular-nums;direction:ltr;writing-mode:vertical-rl}
+.skip{position:absolute;bottom:20px;left:var(--g);font-size:13px;color:#6E6790;z-index:2}
+.flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none}
+.flash.on{animation:fl .12s steps(1)}
+@keyframes fl{0%{opacity:.9}100%{opacity:0}}
+/* כותרות שנחשפות בגלילה */
+.rv{overflow:hidden}
+.rv > *{display:block;transform:translateY(105%);transition:transform .8s cubic-bezier(.16,1,.3,1)}
+.rv.in > *{transform:none}
+@media (prefers-reduced-motion:reduce){.title{opacity:1}.title h1 .ch,.title .row,.rv>*{transform:none!important;opacity:1!important;transition:none!important}.shot,.skip{display:none}}
+.intro h1{font-size:clamp(34px,4.4vw,60px);font-weight:800;line-height:1.05;letter-spacing:-.015em}
+.intro h1 small{display:block;font-size:.5em;font-weight:400;color:var(--mute);letter-spacing:0;margin-top:10px}
+
+.lead{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(20px,3vw,48px);align-items:end;padding:44px var(--g) 0}
+.lead-frame{order:2;display:block;width:100%}
+.lead-frame .ph .play{opacity:1}
+.lead-txt{order:1}
+.lead-txt .lbl{font-size:15px;color:var(--accent);font-weight:600}
+.lead-txt h2{font-size:clamp(40px,5.5vw,84px);font-weight:800;line-height:1;letter-spacing:-.02em;margin-top:8px}
+.lead-txt p{margin-top:16px;font-size:18px;color:var(--mute);max-width:34ch}
+.lead-txt .role{display:block;margin-top:16px;font-size:15px}
+.selrow{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:clamp(64px,8vw,110px) var(--g) 0}
+.sel{font-size:clamp(26px,3vw,40px);font-weight:800;letter-spacing:-.01em}
+/* קרוסלה */
+.reel{position:relative;padding:20px 0 0}
+.track{display:flex;gap:clamp(14px,2vw,28px);overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:var(--g);padding:0 var(--g) 8px;scrollbar-width:none;cursor:grab;list-style:none}
+.track::-webkit-scrollbar{display:none}
+.track.drag{cursor:grabbing;scroll-snap-type:none}
+.track li{flex:0 0 min(62vw,860px);scroll-snap-align:start}
+.card{display:block;width:100%;text-align:right}
+.ph{display:block;aspect-ratio:16/9;border-radius:4px;overflow:hidden;background:var(--c);position:relative}
+.ph img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.001);transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.card:hover .ph img{transform:scale(1.04)}
+.ph .num{position:absolute;top:14px;right:16px;font-size:14px;color:#fff;font-variant-numeric:tabular-nums;text-shadow:0 1px 6px rgba(0,0,0,.5)}
+.ph .play{position:absolute;inset:auto auto 18px 18px;width:56px;height:56px;border-radius:50%;background:rgba(247,245,251,.92);display:grid;place-items:center;opacity:0;transition:opacity .2s}
+.ph .play::before{content:"";border:9px solid transparent;border-left:14px solid var(--ink);margin-left:7px}
+.card:hover .play,.card:focus-visible .play{opacity:1}
+.meta{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-top:16px}
+.meta .t{font-size:clamp(22px,2.6vw,36px);font-weight:800;line-height:1.15;letter-spacing:-.01em}
+.meta .t .en{font-size:.45em;color:var(--mute);margin-inline-start:10px;font-weight:500;letter-spacing:0}
+.meta .k{font-size:15px;color:var(--mute);white-space:nowrap}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:28px var(--g) 0}
+.count{direction:ltr;font-family:var(--en);font-size:15px;color:var(--mute);font-variant-numeric:tabular-nums}
+.arrows{display:flex;gap:10px}
+.arrows button{width:52px;height:52px;border-radius:50%;border:1px solid var(--rule);display:grid;place-items:center;font-size:22px}
+.arrows button:hover{border-color:var(--ink)}
+.arrows button:disabled{opacity:.3;cursor:default}
+.fallback{position:absolute;inset:0;display:grid;align-content:end;padding:20px;color:#fff;font-weight:800;font-size:26px;line-height:1.1;background:linear-gradient(transparent 40%,rgba(21,17,38,.7))}
+.filters{display:flex;gap:8px;flex-wrap:wrap}
+.filters button{min-height:40px;padding:0 18px;border-radius:999px;border:1px solid var(--rule);font-size:15px;color:var(--mute)}
+.filters button[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:#fff}
+
+/* נגן */
+dialog{border:0;padding:0;width:min(1100px,94vw);background:var(--ink);color:#fff;border-radius:6px;overflow:hidden}
+dialog::backdrop{background:rgba(21,17,38,.86)}
+.screen{aspect-ratio:16/9;background:#000;position:relative}
+.screen iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.cap{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 22px}
+.cap h2{font-size:clamp(20px,2.4vw,28px);font-weight:800;line-height:1.2}
+.cap p{font-size:14px;color:#B8B1D3}
+.cap .acts{display:flex;gap:10px;flex:none}
+.cap a,.cap button{min-height:44px;padding:0 18px;border:1px solid #3A3158;border-radius:999px;display:inline-flex;align-items:center;font-size:15px;text-decoration:none}
+
+/* אודות + קשר */
+.about{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,9fr);gap:var(--g);padding:clamp(80px,11vw,150px) var(--g)}
+.about h2,.contact .lbl{font-size:15px;color:var(--accent);font-weight:600}
+.about .sub{grid-column:2;margin-top:-40px;font-size:18px;font-weight:400;color:var(--mute);max-width:46ch}
+.about p{font-size:clamp(22px,2.6vw,34px);font-weight:600;line-height:1.35;max-width:30ch}
+.contact{background:var(--ink);color:#fff;padding:clamp(80px,11vw,150px) var(--g) 56px}
+.contact h2{font-size:clamp(40px,7vw,104px);font-weight:800;line-height:1;letter-spacing:-.025em;margin-top:14px}
+.links{display:flex;flex-wrap:wrap;gap:14px;margin-top:40px}
+.links a{display:inline-flex;align-items:center;min-height:48px;padding:0 24px;border:1px solid #3A3158;border-radius:999px;text-decoration:none;font-size:17px}
+.links a:hover{border-color:#A99BF0}
+.links a.main{background:#A99BF0;border-color:#A99BF0;color:var(--ink);font-weight:700}
+.plain{display:flex;flex-wrap:wrap;gap:8px 28px;margin-top:22px;font-size:16px;color:#B8B1D3}
+.foot{display:flex;justify-content:space-between;align-items:end;margin-top:110px;font-size:13px;color:#6E6790}
+.foot img{width:28px;filter:brightness(0) invert(1);opacity:.7}
+
+@media (max-width:760px){
+ header nav{display:none}
+ .intro{flex-direction:column;align-items:flex-start}
+ .track li{flex-basis:84vw}
+ .lead{grid-template-columns:1fr}
+ .lead-frame{order:0}
+ .meta{flex-direction:column;gap:2px}
+ .arrows button{width:46px;height:46px}
+ .about{grid-template-columns:1fr;gap:14px}
+ .about .sub{grid-column:1;margin-top:0}
+ .tcode{display:none}
+ .cap{flex-direction:column;align-items:flex-start}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header>
+ <a class="mark" href="#" aria-label="ReouVisioN"><img src="assets/symbol.svg" alt=""><img class="wmk" src="assets/wordmark-white.svg" alt=""></a>
+ <nav aria-label="ניווט ראשי"><a href="#work">עבודות</a><a href="#about">אודות</a><a href="#contact">צור קשר</a></nav>
+</header>
+
+<main>
+ <section class="hero" aria-label="פתיח">
+  <div id="shots" aria-hidden="true"></div>
+  <div class="flash" id="flash" aria-hidden="true"></div>
+  <span class="tcode" id="tcode" aria-hidden="true">00:00:00:00</span>
+  <div class="title" id="title">
+   <h1 aria-label="ראובן פיטוסי, עורך וידאו בכיר"><span class="ln" data-split>ראובן פיטוסי</span><span class="ln" data-split>עורך וידאו בכיר</span></h1>
+   <div class="row"><span>סרטים קצרים, תיעוד, טלוויזיה ושואורילים.</span><a href="#work">לעבודות</a></div>
+  </div>
+  <button class="skip" id="skip">דילוג</button>
+ </section>
+ <section id="work">
+  <article class="lead">
+   <button class="lead-frame card" data-i="0" aria-label="צפייה: המחרוזת"><span class="ph" style="--c:#6D53BE"><img src="https://i.ytimg.com/vi/8vFS-mGkumU/maxresdefault.jpg" alt="" onerror="if(this.dataset.f){this.remove()}else{this.dataset.f=1;this.src='https://i.ytimg.com/vi/8vFS-mGkumU/hqdefault.jpg'}"><span class="play"></span></span></button>
+   <div class="lead-txt">
+    <span class="lbl">בחזית</span>
+    <h2>המחרוזת</h2>
+    <p>אישה אחת, נשף אחד, ומחיר שמשלמים במשך שנים. לפי הסיפור של מופסאן.</p>
+    <span class="role">סרט קצר · עריכה</span>
+   </div>
+  </article>
+  <div class="selrow"><h2 class="sel rv"><span>עבודות נבחרות</span></h2><div class="filters" id="filters" role="group" aria-label="סינון"></div></div>
+  <div class="reel">
+   <ul class="track" id="track" aria-label="עבודות"></ul>
+   <div class="nav"><span class="count" id="count"></span><div class="arrows"><button id="prev" aria-label="הקודם">→</button><button id="next" aria-label="הבא">←</button></div></div>
+  </div>
+ </section>
+
+ <section class="about" id="about">
+  <h2>אודות</h2>
+  <p class="rv"><span>מתחיל מהסיפור, ובונה את הקצב סביבו.</span></p>
+  <p class="sub">עורך סרטים קצרים, תיעוד, טלוויזיה וכתבות, ובונה שואורילים לבמאים, צלמים ושחקנים. משתמש גם בכלי AI, כשהם עוזרים לסרט.</p>
+ </section>
+</main>
+
+<footer class="contact" id="contact">
+ <span class="lbl">צור קשר</span>
+ <h2>יש פרויקט? אשמח לשמוע.</h2>
+ <div class="links">
+  <a class="main" href="https://wa.me/972508936855?text=%D7%94%D7%99%D7%99%20%D7%A8%D7%90%D7%95%D7%91%D7%9F%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8" target="_blank" rel="noopener">וואטסאפ</a>
+  <a href="mailto:rfitusi2002@gmail.com">אימייל</a>
+  <a href="https://www.instagram.com/reouvision/" target="_blank" rel="noopener">אינסטגרם</a>
+  <a href="https://www.youtube.com/@rfitusi2002ify" target="_blank" rel="noopener">יוטיוב</a>
+ </div>
+ <p class="plain"><span class="en" dir="ltr">050-893-6855</span><span class="en" dir="ltr">rfitusi2002@gmail.com</span></p>
+ <div class="foot"><span>© 2026 ראובן פיטוסי</span><img src="assets/symbol.svg" alt=""></div>
+</footer>
+
+
+<dialog id="dlg" aria-labelledby="dTitle">
+ <div class="screen" id="screen"></div>
+ <div class="cap">
+  <div><h2 id="dTitle"></h2><p id="dMeta"></p></div>
+  <div class="acts"><a id="dOut" href="#" target="_blank" rel="noopener">פתיחה בחלון חדש</a><button id="dClose">סגירה</button></div>
+ </div>
+</dialog>
+
+<script>
+{
+const V="https://i.vimeocdn.com/video/";
+const works=[
+ {t:"המחרוזת",en:"La Parure",k:"סרט קצר",r:"עריכה",yt:"8vFS-mGkumU",c:"#6D53BE"},
+ {t:"למה אנחנו משרבטים?",k:"סדרה דיגיטלית",r:"עריכה",yt:"I23fxZ_Sh7k",c:"#00A398"},
+ {t:"שכר לימוד",en:"Ep. 2",k:"סדרה דיגיטלית",r:"צילום ועריכה",yt:"Uljae24aYfs",c:"#6A5ACD"},
+ {t:"מהדורת תש\"ח",k:"טלוויזיה",r:"עריכה",vm:"946533590",th:V+"1852667520-05cf6d799dd44a29e680625751b94385b87ee5dad40e6abe2d62a28fc160b73b-d_960",c:"#2D62C4"},
+ {t:"אגמון החולה",k:"כתבה",r:"עריכה",yt:"-iZpR2qZozo",c:"#6D53BE"},
+ {t:"בלב סערת חוק הגיוס",k:"טלוויזיה",r:"עריכה",yt:"hFqfwJoMMTU",c:"#009E94"},
+ {t:"צמה של עוצמה",k:"כתבה",r:"עריכה",vm:"750932053",th:V+"1509806317-ff251c9ac5463bd0eba3c8ca5919eb9187b9911e3638662ee36d6654c4ea4a80-d_960",c:"#2D62C4"},
+ {t:"כתף אל כתף",k:"כתבה",r:"עריכה",yt:"a8uL6uQNXq8",c:"#00A398"},
+ {t:"משבר האקלים",k:"כתבה",r:"עריכה",vm:"767811021",th:V+"1541671652-97274835fba6e5f51fc050f8a4028e83fd62d1eb83a0a67ce79ac08aa09143b0-d_960",c:"#009E94"},
+ {t:"ברית האמהות",k:"כתבה",r:"עריכה",yt:"7brbjeJXpYI",c:"#3A3169"},
+ {t:"יומני הקונספציה",k:"טלוויזיה, תיעודי",r:"עריכה",yt:"toGzQS3hZvs",c:"#3A3169"}
+];
+const thumb=w=>w.th||`https://i.ytimg.com/vi/${w.yt}/hqdefault.jpg`;
+const img=w=>`<img src="${thumb(w)}" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'fallback',textContent:this.dataset.t}))" data-t="${w.t.replace(/"/g,'&quot;')}">`;
+const $=id=>document.getElementById(id);
+const track=$("track");
+const cats=["הכול","דיגיטל","טלוויזיה","כתבות"];
+const catOf=w=>w.k.includes("דיגיטלית")?"דיגיטל":w.k.includes("סרט")?"סרטים":w.k.includes("כתבה")?"כתבות":"טלוויזיה";
+let cat="הכול";
+$("filters").innerHTML=cats.map(c=>`<button aria-pressed="${c===cat}">${c}</button>`).join("");
+const render=()=>{
+ const list=works.map((w,i)=>({w,i})).filter(x=>x.i>0&&(cat==="הכול"||catOf(x.w)===cat));
+ track.innerHTML=list.map(({w,i})=>`<li><button class="card" data-i="${i}"><span class="ph" style="--c:${w.c}">${img(w)}<span class="play"></span></span><span class="meta"><span class="t">${w.t}${w.en?`<span class="en">${w.en}</span>`:""}</span><span class="k">${w.k} · ${w.r}</span></span></button></li>`).join("");
+ track.querySelectorAll(".card").forEach((c,j)=>c.querySelector(".ph").insertAdjacentHTML("beforeend",`<span class="num en">${String(j+1).padStart(2,"0")}</span>`));
+ track.scrollLeft=0;upd();};
+$("filters").onclick=e=>{const b=e.target.closest("button");if(!b)return;cat=b.textContent;
+ [...$("filters").children].forEach(x=>x.setAttribute("aria-pressed",x===b));render()};
+const step=()=>{const li=track.querySelector("li");return li?li.offsetWidth+parseFloat(getComputedStyle(track).columnGap||20):300};
+/* RTL: גלילה קדימה = שמאלה (scrollLeft שלילי) */
+const pos=()=>Math.abs(track.scrollLeft),max=()=>track.scrollWidth-track.clientWidth;
+const upd=()=>{const n=track.children.length,idx=Math.min(n,Math.round(pos()/step())+1);
+ $("count").textContent=String(idx).padStart(2,"0")+" / "+String(n).padStart(2,"0");
+ $("prev").disabled=pos()<4;$("next").disabled=pos()>max()-4};
+$("next").onclick=()=>track.scrollBy({left:-step(),behavior:"smooth"});
+$("prev").onclick=()=>track.scrollBy({left:step(),behavior:"smooth"});
+track.addEventListener("scroll",()=>requestAnimationFrame(upd),{passive:true});
+addEventListener("resize",upd);
+let down=null,moved=false;
+track.addEventListener("pointerdown",e=>{if(e.pointerType!=="mouse")return;down={x:e.clientX,s:track.scrollLeft};moved=false});
+addEventListener("pointermove",e=>{if(!down)return;const dx=e.clientX-down.x;if(Math.abs(dx)>5){moved=true;track.classList.add("drag")}track.scrollLeft=down.s-dx});
+addEventListener("pointerup",()=>{if(!down)return;down=null;track.classList.remove("drag");
+ if(moved){const k=Math.round(pos()/step());track.scrollTo({left:-k*step(),behavior:"smooth"})}});
+track.addEventListener("keydown",e=>{if(e.key==="ArrowLeft"){e.preventDefault();$("next").click()}if(e.key==="ArrowRight"){e.preventDefault();$("prev").click()}});
+render();
+
+const dlg=$("dlg");
+const open=i=>{const w=works[i];
+ const src=w.yt?`https://www.youtube-nocookie.com/embed/${w.yt}?autoplay=1&rel=0`:`https://player.vimeo.com/video/${w.vm}?autoplay=1&title=0&byline=0&portrait=0`;
+ $("screen").innerHTML=`<iframe src="${src}" title="${w.t}" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
+ $("dTitle").textContent=w.t;$("dMeta").textContent=w.k+" · "+w.r;
+ $("dOut").href=w.yt?`https://www.youtube.com/watch?v=${w.yt}`:`https://vimeo.com/${w.vm}`;
+ dlg.showModal()};
+document.querySelector(".lead-frame").onclick=()=>open(0);
+track.addEventListener("click",e=>{const b=e.target.closest(".card");if(!b)return;if(moved){e.preventDefault();moved=false;return}open(+b.dataset.i)});
+const close=()=>{dlg.close()};
+$("dClose").onclick=close;
+dlg.addEventListener("close",()=>{$("screen").innerHTML=""});
+dlg.addEventListener("click",e=>{if(e.target===dlg)close()});
+}
+/* ---- פתיח ---- */
+{
+const FPS=24;
+const seq=[ // [טקסט, פריימים, סגנון]
+ ["סיפור",9,""],["סיפור",3,"s-out"],["קצב",8,"s-right"],["קצב",3,"s-right s-out"],["חיתוך",8,"s-left"],["רגע אחד",10,"s-small"],["ועוד אחד",8,"s-small s-right"],["פריים",6,"s-out"],["כל פריים",14,""]
+];
+const shots=document.getElementById("shots"),title=document.getElementById("title"),flash=document.getElementById("flash"),tc=document.getElementById("tcode");
+document.querySelectorAll("[data-split]").forEach(el=>{let k=0;el.innerHTML=[...el.textContent].map(c=>c===" "?" ":`<span class="ch" style="--d:${k++}">${c}</span>`).join("")});
+const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+let timers=[],f0=0,raf;
+const fin=()=>{timers.forEach(clearTimeout);shots.innerHTML="";title.classList.add("on");document.getElementById("skip").hidden=true};
+const tick=t=>{const fr=Math.floor((t-f0)/1000*FPS);const s=Math.floor(fr/FPS),f=fr%FPS;tc.textContent=`00:00:${String(s).padStart(2,"0")}:${String(f).padStart(2,"0")}`;raf=requestAnimationFrame(tick)};
+if(reduce){fin()}else{
+ let at=300;f0=performance.now()+at;requestAnimationFrame(tick);
+ seq.forEach(([txt,fr,cls],i)=>{timers.push(setTimeout(()=>{shots.innerHTML=`<div class="shot ${cls}"><span>${txt}</span></div>`;if(i===seq.length-1){flash.classList.remove("on");void flash.offsetWidth;flash.classList.add("on")}},at));at+=fr/FPS*1000});
+ timers.push(setTimeout(fin,at));
+}
+document.getElementById("skip").onclick=fin;
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.4});
+document.querySelectorAll(".rv").forEach(el=>io.observe(el));
+}
+</script>
+</body>
+</html>
