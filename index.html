@@ -42,7 +42,7 @@ header nav a:hover{color:#fff}
 /* פתיח: טיפוגרפיה קינטית שנחתכת כמו עריכה (24 פריימים לשנייה) */
 .hero{position:relative;height:100svh;min-height:560px;background:var(--ink);color:#fff;overflow:hidden;display:grid;align-content:end;padding:0 var(--g) clamp(40px,7vh,80px)}
 .frame{position:absolute;inset:0;background:#000 center/cover no-repeat;filter:brightness(.42) saturate(.9);transform:scale(1.04)}
-.frame.end{filter:brightness(.34) saturate(.85);transition:filter 1.2s}
+.frame.end{filter:brightness(.32) saturate(.7) blur(10px);transform:scale(1.08);transition:filter 1.4s ease,transform 1.4s ease}
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 40%,rgba(21,17,38,.92));pointer-events:none}
 .title,.skip,.tcode,header{z-index:2}
 .shot{position:absolute;inset:0;z-index:1;display:grid;place-items:center;padding:0 var(--g);pointer-events:none}
@@ -328,8 +328,9 @@ const frame=document.getElementById("frame");
 const shots=document.getElementById("shots"),title=document.getElementById("title"),flash=document.getElementById("flash"),tc=document.getElementById("tcode");
 const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
 let timers=[],f0=0,raf;
-const fin=()=>{timers.forEach(clearTimeout);cancelAnimationFrame(raf);shots.innerHTML="";frame.style.backgroundImage="url(https://i.ytimg.com/vi/Uljae24aYfs/maxresdefault.jpg),url(https://i.ytimg.com/vi/Uljae24aYfs/hqdefault.jpg)";frame.classList.add("end");title.classList.add("on");document.getElementById("skip").hidden=true};
-const tick=t=>{const fr=Math.floor((t-f0)/1000*FPS);const s=Math.floor(fr/FPS),f=fr%FPS;tc.textContent=`00:00:${String(s).padStart(2,"0")}:${String(f).padStart(2,"0")}`;raf=requestAnimationFrame(tick)};
+const fin=()=>{stopped=true;timers.forEach(clearTimeout);cancelAnimationFrame(raf);shots.innerHTML="";frame.style.backgroundImage="url(https://i.ytimg.com/vi/Uljae24aYfs/maxresdefault.jpg),url(https://i.ytimg.com/vi/Uljae24aYfs/hqdefault.jpg)";frame.classList.add("end");title.classList.add("on");document.getElementById("skip").hidden=true};
+let stopped=false;
+const tick=t=>{if(stopped)return;const fr=Math.floor((t-f0)/1000*FPS);const s=Math.floor(fr/FPS),f=fr%FPS;tc.textContent=`00:00:${String(s).padStart(2,"0")}:${String(f).padStart(2,"0")}`;raf=requestAnimationFrame(tick)};
 if(reduce){fin()}else{
  let at=300;
  const go=()=>{if(go.done)return;go.done=1;FR.slice(1).forEach(u=>{const i=new Image();i.src=u});f0=performance.now()+at;requestAnimationFrame(tick);
