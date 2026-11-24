@@ -46,7 +46,7 @@ header nav a:hover{color:#fff}
 .frame.end.push{animation:fpush 2.6s linear both}
 @keyframes fpush{from{transform:scale(1.1)}to{transform:scale(1.05)}}
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 40%,rgba(21,17,38,.92));pointer-events:none}
-.title,.skip,.tcode,header{z-index:2}
+.title,.tcode,header{z-index:2}
 .shot{position:absolute;inset:0;z-index:1;display:grid;place-items:center;padding:0 var(--g);pointer-events:none}
 .shot span{font-weight:900;font-size:clamp(72px,17vw,280px);line-height:.9;letter-spacing:-.035em;white-space:nowrap}
 .shot span{animation:push .5s cubic-bezier(.2,.8,.2,1) both}
@@ -65,9 +65,7 @@ header nav a:hover{color:#fff}
 .title h1 .ol + .ol{--o:260ms}
 .title .row{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-top:28px;font-size:clamp(17px,1.6vw,21px);color:#B8B1D3;opacity:0;transform:translateY(12px);transition:opacity .6s ease .9s,transform .6s ease .9s}
 .title.on .row{opacity:1;transform:none}
-.title .row a{color:#fff;text-decoration:none;border-bottom:1px solid #6E6790;padding-bottom:2px}
 .tcode{position:absolute;top:50%;left:var(--g);transform:translateY(-50%);font-family:var(--en);font-size:13px;color:#6E6790;font-variant-numeric:tabular-nums;direction:ltr;writing-mode:vertical-rl}
-.skip{position:absolute;bottom:20px;left:var(--g);font-size:13px;color:#6E6790;z-index:2}
 .flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none}
 .flash.on{animation:fl .12s steps(1)}
 @keyframes fl{0%{opacity:.9}100%{opacity:0}}
@@ -75,7 +73,7 @@ header nav a:hover{color:#fff}
 .rv{overflow:hidden}
 .rv > *{display:block;transform:translateY(105%);transition:transform .8s cubic-bezier(.16,1,.3,1)}
 .rv.in > *{transform:none}
-@media (prefers-reduced-motion:reduce){.title{opacity:1}.title h1 .ch,.title .row,.rv>*{transform:none!important;opacity:1!important;transition:none!important}.shot,.skip{display:none}}
+@media (prefers-reduced-motion:reduce){.title{opacity:1}.title h1 .ch,.title .row,.rv>*{transform:none!important;opacity:1!important;transition:none!important}.shot{display:none}}
 .intro h1{font-size:clamp(34px,4.4vw,60px);font-weight:800;line-height:1.05;letter-spacing:-.015em}
 .intro h1 small{display:block;font-size:.5em;font-weight:400;color:var(--mute);letter-spacing:0;margin-top:10px}
 
@@ -200,8 +198,6 @@ dialog::backdrop{background:rgba(21,17,38,.86)}
 @media (max-width:760px){
  header nav{gap:16px;font-size:14px}
  .mark .wmk{height:15px}
- .filters{flex-wrap:nowrap;overflow-x:auto;max-width:100%;scrollbar-width:none}
- .filters button{flex:none}
  .feat{grid-template-columns:1fr}
  .intro{flex-direction:column;align-items:flex-start}
  .track li{flex-basis:84vw}
@@ -256,8 +252,23 @@ dialog::backdrop{background:rgba(21,17,38,.86)}
 .qz-re{min-height:52px;padding:0 22px;border-radius:999px;border:1px solid #3A3158;font-size:15px}
 @media (max-width:760px){.match{grid-template-columns:1fr;gap:28px}.qz{min-height:0}.qz-act{flex-direction:column}.qz-wa,.qz-re{width:100%;justify-content:center}}
 @media (prefers-reduced-motion:reduce){.qz-body{animation:none!important}}
+/* ---- פתיח: פעולה אחת, זמינה מהפריים הראשון ---- */
+.towork{position:absolute;z-index:3;left:var(--g);bottom:clamp(40px,7vh,80px);display:inline-flex;align-items:center;min-height:44px;padding:0 20px;border-radius:999px;background:#151126;border:1px solid #6E6790;color:#fff;font-size:15px;font-weight:600;text-decoration:none;transition:border-color .2s}
+.towork:hover{border-color:#fff}
+.towork:focus-visible{outline:2px solid #A99BF0;outline-offset:3px;border-color:#fff}
+.title .row{padding-inline-end:170px}
+/* ---- אודות: צעד ראשון לפנייה ---- */
+.about{row-gap:28px}
+.about .sub{margin-top:0}
+.about .start{grid-column:2;max-width:52ch}
+.about .start p{font-size:18px;font-weight:400;line-height:1.55;color:var(--ink);max-width:none}
+.about .start a{display:inline-block;margin-top:16px;font-size:18px;font-weight:700;color:var(--ink);text-decoration:none;border-bottom:2px solid var(--accent);padding-bottom:3px}
+.about .start a:hover{color:var(--accent)}
+@media (max-width:760px){.hero{padding-bottom:96px}.towork{bottom:28px}.title .row{padding-inline-end:0}.filters{flex-wrap:wrap;overflow:visible}.about .start{grid-column:1}}
+@media (max-width:420px){header nav{gap:14px;font-size:13px}header nav a{white-space:nowrap}.mark .wmk{display:none}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
+<noscript><style>.title{opacity:1}.title h1 .ch,.title .row,.rv>*{transform:none!important;opacity:1!important}.rise{opacity:1!important;transform:none!important}#shots,.tcode{display:none}</style></noscript>
 </head>
 <body>
 
@@ -273,9 +284,9 @@ dialog::backdrop{background:rgba(21,17,38,.86)}
   <span class="tcode" id="tcode" aria-hidden="true">00:00:00:00</span>
   <div class="title" id="title">
    <h1 aria-label="ראובן פיטוסי, עורך וידאו"><svg class="ol" viewBox="0 -800 5815 1040" style="--ar:5.5913" role="img" aria-label="ראובן פיטוסי" fill="currentColor"><path class="ch" style="--d:0" d="M5594 0H5757V-378C5757 -530 5667 -610 5521 -610H5260V-485H5482C5559 -485 5594 -453 5594 -376Z"/><path class="ch" style="--d:1" d="M5031 -241C5115 -286 5172 -365 5172 -471V-610H5010V-469C5010 -403 4991 -355 4954 -327C4933 -361 4904 -406 4890 -426L4749 -610H4560L4727 -395C4647 -348 4594 -272 4594 -169V0H4756V-171C4756 -233 4773 -279 4805 -308L4867 -211L5021 0H5210Z"/><path class="ch" style="--d:2" d="M4286 0H4449V-610H4286Z"/><path class="ch" style="--d:3" d="M3629 0H4195L4198 -125H4121C4118 -162 4118 -207 4118 -261V-378C4118 -523 4037 -610 3880 -610H3631L3628 -485H3836C3924 -485 3955 -454 3955 -368V-208C3955 -184 3957 -150 3959 -125H3629Z"/><path class="ch" style="--d:4" d="M3359 211H3522V-610H3359Z"/><path class="ch" style="--d:5" d="M2674 -212 2668 -329C2657 -327 2649 -327 2644 -327C2579 -327 2554 -369 2554 -411C2554 -463 2598 -497 2673 -497C2779 -497 2828 -420 2828 -309C2828 -129 2694 -125 2634 -125H2450L2446 0H2654C2879 0 2992 -117 2992 -302C2992 -495 2867 -622 2672 -622C2500 -622 2392 -530 2392 -402C2392 -293 2465 -208 2619 -208C2636 -208 2656 -209 2674 -212Z"/><path class="ch" style="--d:6" d="M2130 -224 2293 -271V-610H2130Z"/><path class="ch" style="--d:7" d="M1711 13C1905 13 2028 -101 2028 -318C2028 -520 1925 -622 1761 -622C1731 -622 1696 -618 1674 -613L1670 -483C1689 -489 1709 -494 1737 -494C1821 -494 1864 -443 1864 -320C1864 -178 1806 -115 1711 -115C1616 -115 1552 -178 1552 -303V-610H1390V-303C1390 -101 1518 13 1711 13Z"/><path class="ch" style="--d:8" d="M1096 0H1259V-610H1096Z"/><path class="ch" style="--d:9" d="M646 -610H347V-303C346 -102 474 13 664 13C859 13 984 -102 984 -305C984 -508 861 -610 646 -610ZM666 -114C574 -114 510 -175 510 -302V-410C510 -426 509 -454 508 -485H645C758 -485 821 -433 821 -300C821 -175 758 -114 666 -114Z"/><path class="ch" style="--d:10" d="M64 -224 227 -271V-610H64Z"/></svg><svg class="ol" viewBox="0 -800 4625 1040" style="--ar:4.4471" role="img" aria-label="עורך וידאו" fill="currentColor"><path class="ch" style="--d:0" d="M4406 -610V-394C4406 -258 4377 -184 4311 -148C4299 -191 4283 -241 4267 -289L4152 -610H3985L4159 -112L4008 -88L3999 39L4235 3C4480 -34 4569 -158 4569 -403V-610Z"/><path class="ch" style="--d:1" d="M3701 0H3864V-610H3701Z"/><path class="ch" style="--d:2" d="M3406 0H3569V-378C3569 -530 3479 -610 3333 -610H3072V-485H3294C3371 -485 3406 -453 3406 -376Z"/><path class="ch" style="--d:3" d="M2849 211H3011V-292C3011 -505 2877 -610 2660 -610H2514L2510 -485H2639C2780 -485 2849 -432 2849 -294Z"/><path class="ch" style="--d:4" d="M2005 0H2168V-610H2005Z"/><path class="ch" style="--d:5" d="M1704 -224 1867 -271V-610H1704Z"/><path class="ch" style="--d:6" d="M1374 0H1537V-485H1623L1626 -610H1048V-485H1374Z"/><path class="ch" style="--d:7" d="M819 -241C903 -286 960 -365 960 -471V-610H798V-469C798 -403 779 -355 742 -327C721 -361 692 -406 678 -426L537 -610H348L515 -395C435 -348 382 -272 382 -169V0H544V-171C544 -233 561 -279 593 -308L655 -211L809 0H998Z"/><path class="ch" style="--d:8" d="M74 0H237V-610H74Z"/></svg></h1>
-   <div class="row"><span>סרטים קצרים, תיעוד, טלוויזיה ושואורילים.</span><a href="#work">לעבודות</a></div>
+   <div class="row"><span>סרטים קצרים, תיעוד, טלוויזיה ושואורילים.</span></div>
   </div>
-  <button class="skip" id="skip">דילוג</button>
+  <a class="towork" id="towork" href="#work">ישר לעבודות</a>
  </section>
  <section id="work">
   <article class="lead">
@@ -288,7 +299,7 @@ dialog::backdrop{background:rgba(21,17,38,.86)}
    </div>
   </article>
   <div class="feat" id="feat"></div>
-  <div class="selrow"><h2 class="sel rv"><span><svg class="ol" viewBox="0 -800 5129 1040" style="--ar:4.9317" role="img" aria-label="עוד עבודות" fill="currentColor"><path d="M4910 -610V-394C4910 -258 4881 -184 4815 -148C4803 -191 4787 -241 4771 -289L4656 -610H4489L4663 -112L4512 -88L4503 39L4739 3C4984 -34 5073 -158 5073 -403V-610ZM4205 0H4368V-610H4205ZM3865 0H4028V-485H4114L4117 -610H3539V-485H3865ZM3052 -610V-394C3052 -258 3023 -184 2957 -148C2945 -191 2929 -241 2913 -289L2798 -610H2631L2805 -112L2654 -88L2645 39L2881 3C3126 -34 3215 -158 3215 -403V-610ZM2001 0H2567L2570 -125H2493C2490 -162 2490 -207 2490 -261V-378C2490 -523 2409 -610 2252 -610H2003L2000 -485H2208C2296 -485 2327 -454 2327 -368V-208C2327 -184 2329 -150 2331 -125H2001ZM1731 0H1894V-610H1731ZM1391 0H1554V-485H1640L1643 -610H1065V-485H1391ZM815 0H978V-610H815ZM119 12C244 12 303 -48 303 -180V-340C303 -389 302 -438 306 -485H408C486 -485 520 -453 520 -376V0H683V-378C683 -530 594 -610 448 -610H34V-485H143C141 -461 140 -426 140 -403V-199C140 -141 118 -115 76 -115C66 -115 57 -117 44 -120L36 2C57 7 83 12 119 12Z"/></svg></span></h2><div class="filters" id="filters" role="group" aria-label="סינון"></div></div>
+  <div class="selrow"><h2 class="sel rv"><span><svg class="ol" viewBox="0 -800 6712 1040" style="--ar:6.4538" role="img" aria-label="עבודות נוספות" fill="currentColor"><path d="M6493 -610V-394C6493 -258 6464 -184 6398 -148C6386 -191 6370 -241 6354 -289L6239 -610H6072L6246 -112L6095 -88L6086 39L6322 3C6567 -34 6656 -158 6656 -403V-610ZM5442 0H6008L6011 -125H5934C5931 -162 5931 -207 5931 -261V-378C5931 -523 5850 -610 5693 -610H5444L5441 -485H5649C5737 -485 5768 -454 5768 -368V-208C5768 -184 5770 -150 5772 -125H5442ZM5172 0H5335V-610H5172ZM4832 0H4995V-485H5081L5084 -610H4506V-485H4832ZM4256 0H4419V-610H4256ZM3560 12C3685 12 3744 -48 3744 -180V-340C3744 -389 3743 -438 3747 -485H3849C3927 -485 3961 -453 3961 -376V0H4124V-378C4124 -530 4035 -610 3889 -610H3475V-485H3584C3582 -461 3581 -426 3581 -403V-199C3581 -141 3559 -115 3517 -115C3507 -115 3498 -117 3485 -120L3477 2C3498 7 3524 12 3560 12ZM2799 0H3128V-400C3128 -526 3085 -610 2911 -610H2803L2799 -485H2880C2945 -485 2966 -464 2966 -392V-237C2967 -187 2969 -150 2971 -125H2799ZM2530 0H2693V-610H2530ZM2080 -610H1781V-303C1780 -102 1908 13 2098 13C2293 13 2418 -102 2418 -305C2418 -508 2295 -610 2080 -610ZM2100 -114C2008 -114 1944 -175 1944 -302V-410C1944 -426 1943 -454 1942 -485H2079C2192 -485 2255 -433 2255 -300C2255 -175 2192 -114 2100 -114ZM1369 -212 1363 -329C1352 -327 1344 -327 1339 -327C1274 -327 1249 -369 1249 -411C1249 -463 1293 -497 1368 -497C1474 -497 1523 -420 1523 -309C1523 -129 1389 -125 1329 -125H1145L1141 0H1349C1574 0 1687 -117 1687 -302C1687 -495 1562 -622 1367 -622C1195 -622 1087 -530 1087 -402C1087 -293 1160 -208 1314 -208C1331 -208 1351 -209 1369 -212ZM815 0H978V-610H815ZM119 12C244 12 303 -48 303 -180V-340C303 -389 302 -438 306 -485H408C486 -485 520 -453 520 -376V0H683V-378C683 -530 594 -610 448 -610H34V-485H143C141 -461 140 -426 140 -403V-199C140 -141 118 -115 76 -115C66 -115 57 -117 44 -120L36 2C57 7 83 12 119 12Z"/></svg></span></h2><div class="filters" id="filters" role="group" aria-label="סינון"></div></div>
   <div class="reel">
    <ul class="track" id="track" aria-label="עבודות"></ul>
    <div class="nav"><span class="count" id="count"></span><div class="arrows"><button id="prev" aria-label="הקודם">→</button><button id="next" aria-label="הבא">←</button></div></div>
@@ -303,6 +314,10 @@ dialog::backdrop{background:rgba(21,17,38,.86)}
  <section class="about" id="about">
   <h2>אודות</h2>
   <p class="rv big" aria-label="מתחיל מהסיפור, ובונה את הקצב סביבו."><span><svg class="ol" viewBox="0 -800 7273 1040" style="--ar:6.9933" role="img" aria-label="מתחיל מהסיפור," fill="currentColor"><path d="M6969 7C7143 7 7229 -91 7229 -307C7229 -505 7153 -617 6983 -617C6873 -617 6805 -558 6777 -483H6774C6770 -525 6760 -574 6750 -605H6631C6656 -532 6678 -401 6670 -315L6640 0H6759L6786 -292C6798 -416 6840 -520 6962 -520C7066 -520 7110 -447 7110 -302C7110 -144 7068 -92 6959 -92C6947 -92 6936 -93 6924 -95L6918 4C6936 6 6953 7 6969 7ZM5973 11C6081 11 6136 -48 6136 -180V-366C6136 -423 6136 -469 6140 -507H6266C6356 -507 6397 -469 6397 -380V0H6516V-377C6516 -515 6442 -605 6283 -605H5907V-507H6021C6019 -482 6017 -445 6017 -420V-187C6017 -110 5992 -90 5946 -90C5939 -90 5923 -92 5913 -95L5906 4C5921 8 5946 11 5973 11ZM5244 0H5363V-507H5542C5632 -507 5674 -469 5674 -380V0H5793V-377C5793 -515 5719 -605 5560 -605H5244ZM4963 -232 5082 -267V-605H4963ZM4501 0H4624L4847 -502V-605H4510V-756H4391V-507H4729ZM3803 7C3977 7 4063 -91 4063 -307C4063 -505 3987 -617 3817 -617C3707 -617 3639 -558 3611 -483H3608C3604 -525 3594 -574 3584 -605H3465C3490 -532 3512 -401 3504 -315L3474 0H3593L3620 -292C3632 -416 3674 -520 3796 -520C3900 -520 3944 -447 3944 -302C3944 -144 3902 -92 3793 -92C3781 -92 3770 -93 3758 -95L3752 4C3770 6 3787 7 3803 7ZM3231 0H3350V-377C3350 -515 3276 -605 3117 -605H2811V-507H3099C3189 -507 3231 -469 3231 -380ZM2811 0H2930V-175C2930 -244 2930 -310 2936 -362H2817C2813 -335 2811 -292 2811 -256ZM2356 -605H2081V-299C2081 -106 2199 12 2381 12C2565 12 2682 -105 2682 -304C2682 -484 2590 -605 2356 -605ZM2382 -85C2272 -85 2200 -164 2200 -301V-446C2200 -459 2199 -482 2198 -507H2356C2492 -507 2563 -443 2563 -299C2563 -166 2489 -85 2382 -85ZM1825 -232 1944 -267V-605H1825ZM1398 -216 1392 -311C1382 -310 1373 -310 1365 -310C1289 -310 1260 -357 1260 -409C1260 -477 1316 -521 1403 -521C1519 -521 1584 -434 1584 -306C1584 -138 1476 -99 1378 -99H1198L1195 0H1378C1612 0 1704 -127 1704 -300C1704 -498 1584 -617 1406 -617C1248 -617 1140 -530 1140 -400C1140 -288 1214 -212 1348 -212C1366 -212 1382 -214 1398 -216ZM890 0H1009V-605H890ZM614 0H733V-377C733 -515 660 -605 501 -605H269V-507H484C573 -507 614 -469 614 -380ZM125 123 214 -126H92L28 123Z"/></svg><svg class="ol" viewBox="0 -800 9676 1040" style="--ar:9.3038" role="img" aria-label="ובונה את הקצב סביבו." fill="currentColor"><path d="M9470 0H9589V-605H9470ZM8831 0H9361L9364 -99H9288C9284 -137 9284 -182 9284 -238V-377C9284 -515 9210 -605 9051 -605H8833L8830 -507H9033C9122 -507 9165 -469 9165 -380V-185C9165 -160 9167 -124 9169 -99H8831ZM8584 0H8703V-605H8584ZM8143 -1 8427 0V-392C8427 -518 8403 -605 8233 -605H8146L8143 -507H8219C8293 -507 8309 -476 8309 -393V-214C8309 -162 8312 -124 8314 -99H8143ZM7914 0H8033V-377C8033 -515 7959 -605 7800 -605H7494V-507H7782C7872 -507 7914 -469 7914 -380ZM7494 0H7613V-175C7613 -244 7613 -310 7619 -362H7500C7496 -335 7494 -292 7494 -256ZM6940 -237C7026 -290 7076 -380 7076 -481V-605H6956V-481C6956 -404 6932 -343 6883 -306C6860 -341 6831 -383 6816 -403L6658 -605H6520L6686 -400C6603 -347 6555 -258 6555 -159V0H6674V-159C6674 -233 6696 -294 6743 -331C6765 -300 6786 -272 6796 -256L6981 0H7119ZM5862 11C5970 11 6025 -48 6025 -180V-366C6025 -423 6025 -469 6029 -507H6155C6245 -507 6286 -469 6286 -380V0H6405V-377C6405 -515 6331 -605 6172 -605H5796V-507H5910C5908 -482 5906 -445 5906 -420V-187C5906 -110 5881 -90 5835 -90C5828 -90 5812 -92 5802 -95L5795 4C5810 8 5835 11 5862 11ZM5318 0H5437V-377C5437 -515 5363 -605 5204 -605H4898V-507H5186C5276 -507 5318 -469 5318 -380ZM4898 0H5017V-175C5017 -244 5017 -310 5023 -362H4904C4900 -335 4898 -292 4898 -256ZM4428 0H4550L4774 -502V-605H4217V-507H4656ZM4215 210H4334V-175C4334 -244 4335 -310 4341 -362H4221C4217 -335 4215 -292 4215 -256ZM3599 0 4074 1V-93L3959 -247C4041 -300 4085 -388 4085 -486V-605H3966V-486C3966 -417 3947 -357 3905 -321L3850 -399L3694 -605H3560L3750 -358C3773 -328 3843 -238 3946 -99H3599ZM2993 0H3523L3526 -99H3450C3446 -137 3446 -182 3446 -238V-377C3446 -515 3372 -605 3213 -605H2995L2992 -507H3195C3284 -507 3327 -469 3327 -380V-185C3327 -160 3329 -124 3331 -99H2993ZM2337 -605H2062V-299C2062 -106 2180 12 2362 12C2546 12 2663 -105 2663 -304C2663 -484 2571 -605 2337 -605ZM2363 -85C2253 -85 2181 -164 2181 -301V-446C2181 -459 2180 -482 2179 -507H2337C2473 -507 2544 -443 2544 -299C2544 -166 2470 -85 2363 -85ZM1450 0H1980L1983 -99H1907C1903 -137 1903 -182 1903 -238V-377C1903 -515 1829 -605 1670 -605H1452L1449 -507H1652C1741 -507 1784 -469 1784 -380V-185C1784 -160 1786 -124 1788 -99H1450ZM1213 -232 1332 -267V-605H1213ZM584 0H1114L1117 -99H1041C1037 -137 1037 -182 1037 -238V-377C1037 -515 963 -605 804 -605H586L583 -507H786C875 -507 918 -469 918 -380V-185C918 -160 920 -124 922 -99H584ZM337 0H456V-605H337ZM189 0V-128H61V0Z"/></svg></span></p>
+  <div class="start">
+   <p>יש לך חומרי גלם, גרסה ראשונה או רעיון לסרט? אפשר לשלוח לי כמה מילים על הפרויקט, למי הוא מיועד ואיפה הוא עומד. אם יש קטע לצפייה, אשמח לראות.</p>
+   <a href="#contact">לדבר עם ראובן על הפרויקט</a>
+  </div>
   <p class="sub">עורך סרטים קצרים, תיעוד, טלוויזיה וכתבות, ובונה שואורילים לבמאים, צלמים ושחקנים. משתמש גם בכלי AI, כשהם עוזרים לסרט.</p>
  </section>
  <section class="match" id="reel" aria-labelledby="reel-h">
@@ -359,8 +374,9 @@ const thumb=w=>w.th||`https://i.ytimg.com/vi/${w.yt}/maxresdefault.jpg`;
 const img=w=>`<img src="${thumb(w)}" alt="" loading="lazy" onerror="if(/maxres/.test(this.src)){this.src=this.src.replace('maxresdefault','hqdefault');return}this.replaceWith(Object.assign(document.createElement('span'),{className:'fallback',textContent:this.dataset.t}))" data-t="${w.t.replace(/"/g,'&quot;')}">`;
 const $=id=>document.getElementById(id);
 const track=$("track");
-const cats=["הכול","דיגיטל","טלוויזיה","כתבות"];
 const catOf=w=>w.k.includes("דיגיטלית")?"דיגיטל":w.k.includes("סרט")?"סרטים":w.k.includes("כתבה")?"כתבות":"טלוויזיה";
+/* רק קטגוריות שיש בהן עבודות באזור המסונן (העבודות הנבחרות מוצגות מעליו) */
+const cats=["הכול","דיגיטל","טלוויזיה","כתבות"].filter(c=>c==="הכול"||works.some((w,i)=>i>2&&catOf(w)===c));
 let cat="הכול";
 $("filters").innerHTML=cats.map(c=>`<button aria-pressed="${c===cat}">${c}</button>`).join("");
 const card=(w,i)=>`<button class="card" data-i="${i}"><span class="ph" style="--c:${w.c}">${img(w)}<span class="play"></span></span><span class="meta"><span class="t">${TOL[w.t]||w.t}${w.en?`<span class="en">${w.en}</span>`:""}</span><span class="k">${w.k} · ${w.r}</span></span></button>`;
@@ -424,7 +440,7 @@ let li=0,loopT=null,heroOn=true;
 const cut=()=>{if(!heroOn||document.hidden)return;li=(li+1)%LOOP.length;frame.style.backgroundImage=LOOP[li];frame.classList.remove("push");void frame.offsetWidth;frame.classList.add("push")};
 new IntersectionObserver(es=>{heroOn=es[0].isIntersecting},{threshold:.1}).observe(document.querySelector(".hero"));
 const startLoop=()=>{if(loopT||reduce)return;loopT=setInterval(cut,2600)};
-const fin=()=>{stopped=true;setTimeout(startLoop,2200);timers.forEach(clearTimeout);cancelAnimationFrame(raf);shots.innerHTML="";frame.style.backgroundImage="url(https://i.ytimg.com/vi/Uljae24aYfs/maxresdefault.jpg),url(https://i.ytimg.com/vi/Uljae24aYfs/hqdefault.jpg)";frame.classList.add("end");title.classList.add("on");document.getElementById("skip").hidden=true};
+const fin=()=>{stopped=true;setTimeout(startLoop,2200);timers.forEach(clearTimeout);cancelAnimationFrame(raf);shots.innerHTML="";frame.style.backgroundImage="url(https://i.ytimg.com/vi/Uljae24aYfs/maxresdefault.jpg),url(https://i.ytimg.com/vi/Uljae24aYfs/hqdefault.jpg)";frame.classList.add("end");title.classList.add("on")};
 let stopped=false;
 const tick=t=>{if(stopped)return;const fr=Math.floor((t-f0)/1000*FPS);const s=Math.floor(fr/FPS),f=fr%FPS;tc.textContent=`00:00:${String(s).padStart(2,"0")}:${String(f).padStart(2,"0")}`;raf=requestAnimationFrame(tick)};
 if(reduce){fin()}else{
@@ -434,7 +450,7 @@ if(reduce){fin()}else{
  timers.push(setTimeout(fin,at));};
  const first=new Image();first.onload=go;first.onerror=go;first.src=FR[0];setTimeout(go,1200);
 }
-document.getElementById("skip").onclick=fin;
+document.getElementById("towork").addEventListener("click",()=>{if(!stopped)fin()});
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.25});
 document.querySelectorAll(".rv,.lead,.rise").forEach(el=>io.observe(el));
 }
