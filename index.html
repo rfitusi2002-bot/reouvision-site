@@ -276,10 +276,24 @@ dialog::backdrop{background:rgba(21,17,38,.86)}
 .wa-float.on{visibility:visible}
 .how .talk{display:inline-block;margin-top:44px;font-size:18px;font-weight:700;color:var(--ink);text-decoration:none;border-bottom:2px solid var(--accent);padding-bottom:3px}
 .how .talk:hover{color:var(--accent)}
+/* ---- פתיח: השואוריל ברקע, בלופ, בלי סאונד עד לחיצה ---- */
+.reelbg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.5) saturate(.95);transition:filter 1.2s ease}
+.hero.has-reel .frame{display:none}
+.hero.has-reel.done .reelbg{filter:brightness(.6) saturate(1)}
+.sound{position:absolute;z-index:3;left:var(--g);bottom:calc(clamp(40px,7vh,80px) + 56px);display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 16px;border-radius:999px;background:#151126;border:1px solid #6E6790;color:#fff;font-size:14px;font-weight:600}
+.sound:hover{border-color:#fff}
+.sound:focus-visible{outline:2px solid #A99BF0;outline-offset:3px}
+.sound i{display:inline-flex;align-items:flex-end;gap:2px;height:12px}
+.sound i b{width:2px;height:4px;background:#A99BF0;border-radius:1px}
+.sound[aria-pressed=true] i b{animation:eq .9s ease-in-out infinite alternate}
+.sound[aria-pressed=true] i b:nth-child(2){animation-delay:.2s}.sound[aria-pressed=true] i b:nth-child(3){animation-delay:.4s}
+@keyframes eq{from{height:3px}to{height:12px}}
+@media (max-width:760px){.sound{left:auto;right:var(--g);bottom:28px}}
+@media (prefers-reduced-motion:reduce){.sound i b{animation:none!important}}
 @media (max-width:420px){header nav{gap:14px;font-size:13px}header nav a{white-space:nowrap}.mark .wmk{display:none}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
-<noscript><style>.title{opacity:1}.title h1 .ch,.title .row,.rv>*{transform:none!important;opacity:1!important}.rise{opacity:1!important;transform:none!important}#shots,.tcode{display:none}</style></noscript>
+<noscript><style>.title{opacity:1}.title h1 .ch,.title .row,.rv>*{transform:none!important;opacity:1!important}.rise{opacity:1!important;transform:none!important}#shots,.tcode,.sound{display:none}.hero .frame{display:none}</style></noscript>
 </head>
 <body>
 
@@ -290,6 +304,7 @@ dialog::backdrop{background:rgba(21,17,38,.86)}
 
 <main>
  <section class="hero" aria-label="פתיח">
+  <video class="reelbg" id="reelbg" muted loop playsinline autoplay preload="auto" poster="assets/reel/poster.jpg" aria-hidden="true" tabindex="-1"><source src="assets/reel/showreel-720.mp4" type="video/mp4"></video>
   <div class="frame" id="frame" aria-hidden="true"></div>
   <div id="shots" aria-hidden="true"></div>
   <span class="tcode" id="tcode" aria-hidden="true">00:00:00:00</span>
@@ -297,6 +312,7 @@ dialog::backdrop{background:rgba(21,17,38,.86)}
    <h1 aria-label="ראובן פיטוסי, עורך וידאו"><svg class="ol" viewBox="0 -800 5815 1040" style="--ar:5.5913" role="img" aria-label="ראובן פיטוסי" fill="currentColor"><path class="ch" style="--d:0" d="M5594 0H5757V-378C5757 -530 5667 -610 5521 -610H5260V-485H5482C5559 -485 5594 -453 5594 -376Z"/><path class="ch" style="--d:1" d="M5031 -241C5115 -286 5172 -365 5172 -471V-610H5010V-469C5010 -403 4991 -355 4954 -327C4933 -361 4904 -406 4890 -426L4749 -610H4560L4727 -395C4647 -348 4594 -272 4594 -169V0H4756V-171C4756 -233 4773 -279 4805 -308L4867 -211L5021 0H5210Z"/><path class="ch" style="--d:2" d="M4286 0H4449V-610H4286Z"/><path class="ch" style="--d:3" d="M3629 0H4195L4198 -125H4121C4118 -162 4118 -207 4118 -261V-378C4118 -523 4037 -610 3880 -610H3631L3628 -485H3836C3924 -485 3955 -454 3955 -368V-208C3955 -184 3957 -150 3959 -125H3629Z"/><path class="ch" style="--d:4" d="M3359 211H3522V-610H3359Z"/><path class="ch" style="--d:5" d="M2674 -212 2668 -329C2657 -327 2649 -327 2644 -327C2579 -327 2554 -369 2554 -411C2554 -463 2598 -497 2673 -497C2779 -497 2828 -420 2828 -309C2828 -129 2694 -125 2634 -125H2450L2446 0H2654C2879 0 2992 -117 2992 -302C2992 -495 2867 -622 2672 -622C2500 -622 2392 -530 2392 -402C2392 -293 2465 -208 2619 -208C2636 -208 2656 -209 2674 -212Z"/><path class="ch" style="--d:6" d="M2130 -224 2293 -271V-610H2130Z"/><path class="ch" style="--d:7" d="M1711 13C1905 13 2028 -101 2028 -318C2028 -520 1925 -622 1761 -622C1731 -622 1696 -618 1674 -613L1670 -483C1689 -489 1709 -494 1737 -494C1821 -494 1864 -443 1864 -320C1864 -178 1806 -115 1711 -115C1616 -115 1552 -178 1552 -303V-610H1390V-303C1390 -101 1518 13 1711 13Z"/><path class="ch" style="--d:8" d="M1096 0H1259V-610H1096Z"/><path class="ch" style="--d:9" d="M646 -610H347V-303C346 -102 474 13 664 13C859 13 984 -102 984 -305C984 -508 861 -610 646 -610ZM666 -114C574 -114 510 -175 510 -302V-410C510 -426 509 -454 508 -485H645C758 -485 821 -433 821 -300C821 -175 758 -114 666 -114Z"/><path class="ch" style="--d:10" d="M64 -224 227 -271V-610H64Z"/></svg><svg class="ol" viewBox="0 -800 4625 1040" style="--ar:4.4471" role="img" aria-label="עורך וידאו" fill="currentColor"><path class="ch" style="--d:0" d="M4406 -610V-394C4406 -258 4377 -184 4311 -148C4299 -191 4283 -241 4267 -289L4152 -610H3985L4159 -112L4008 -88L3999 39L4235 3C4480 -34 4569 -158 4569 -403V-610Z"/><path class="ch" style="--d:1" d="M3701 0H3864V-610H3701Z"/><path class="ch" style="--d:2" d="M3406 0H3569V-378C3569 -530 3479 -610 3333 -610H3072V-485H3294C3371 -485 3406 -453 3406 -376Z"/><path class="ch" style="--d:3" d="M2849 211H3011V-292C3011 -505 2877 -610 2660 -610H2514L2510 -485H2639C2780 -485 2849 -432 2849 -294Z"/><path class="ch" style="--d:4" d="M2005 0H2168V-610H2005Z"/><path class="ch" style="--d:5" d="M1704 -224 1867 -271V-610H1704Z"/><path class="ch" style="--d:6" d="M1374 0H1537V-485H1623L1626 -610H1048V-485H1374Z"/><path class="ch" style="--d:7" d="M819 -241C903 -286 960 -365 960 -471V-610H798V-469C798 -403 779 -355 742 -327C721 -361 692 -406 678 -426L537 -610H348L515 -395C435 -348 382 -272 382 -169V0H544V-171C544 -233 561 -279 593 -308L655 -211L809 0H998Z"/><path class="ch" style="--d:8" d="M74 0H237V-610H74Z"/></svg></h1>
    <div class="row"><span>סרטים קצרים, תיעוד, טלוויזיה ושואורילים.</span></div>
   </div>
+  <button class="sound" id="sound" type="button" aria-pressed="false" hidden><i aria-hidden="true"><b></b><b></b><b></b></i><span>סאונד</span></button>
   <a class="towork" id="towork" href="#work">ישר לעבודות</a>
  </section>
  <section id="work">
@@ -451,8 +467,8 @@ const LOOP=["Uljae24aYfs","I23fxZ_Sh7k","8vFS-mGkumU","-iZpR2qZozo","hFqfwJoMMTU
 let li=0,loopT=null,heroOn=true;
 const cut=()=>{if(!heroOn||document.hidden)return;li=(li+1)%LOOP.length;frame.style.backgroundImage=LOOP[li];frame.classList.remove("push");void frame.offsetWidth;frame.classList.add("push")};
 new IntersectionObserver(es=>{heroOn=es[0].isIntersecting},{threshold:.1}).observe(document.querySelector(".hero"));
-const startLoop=()=>{if(loopT||reduce)return;loopT=setInterval(cut,2600)};
-const fin=()=>{stopped=true;setTimeout(startLoop,2200);timers.forEach(clearTimeout);cancelAnimationFrame(raf);shots.innerHTML="";frame.style.backgroundImage="url(https://i.ytimg.com/vi/Uljae24aYfs/maxresdefault.jpg),url(https://i.ytimg.com/vi/Uljae24aYfs/hqdefault.jpg)";frame.classList.add("end");title.classList.add("on")};
+const startLoop=()=>{if(loopT||reduce||document.querySelector(".hero.has-reel"))return;loopT=setInterval(cut,2600)};
+const fin=()=>{stopped=true;setTimeout(startLoop,2200);timers.forEach(clearTimeout);cancelAnimationFrame(raf);shots.innerHTML="";frame.style.backgroundImage="url(https://i.ytimg.com/vi/Uljae24aYfs/maxresdefault.jpg),url(https://i.ytimg.com/vi/Uljae24aYfs/hqdefault.jpg)";frame.classList.add("end");title.classList.add("on");document.querySelector(".hero").classList.add("done")};
 let stopped=false;
 const tick=t=>{if(stopped)return;const fr=Math.floor((t-f0)/1000*FPS);const s=Math.floor(fr/FPS),f=fr%FPS;tc.textContent=`00:00:${String(s).padStart(2,"0")}:${String(f).padStart(2,"0")}`;raf=requestAnimationFrame(tick)};
 if(reduce){fin()}else{
@@ -551,6 +567,29 @@ addEventListener("pointermove",e=>{if(e.pointerType!=="mouse")return;mx=e.client
  const o=!!(e.target.closest&&e.target.closest("a,button"));if(o!==over){over=o;idle=0;if(over&&!raf)raf=requestAnimationFrame(loop)}},{passive:true});
 addEventListener("pointerdown",e=>{if(e.pointerType==="mouse")spawn(e.clientX,e.clientY,30,true)},{passive:true});
 document.addEventListener("visibilitychange",()=>{if(document.hidden){ps=[];over=false}});
+}
+/* ---- שואוריל ברקע הפתיח ---- */
+{
+const v=document.getElementById("reelbg"),hero=document.querySelector(".hero"),btn=document.getElementById("sound"),lbl=btn.querySelector("span"),tcEl=document.getElementById("tcode");
+const red=matchMedia("(prefers-reduced-motion: reduce)").matches;
+hero.classList.add("has-reel");
+/* במסך רחב: הגרסה ב־1080 */
+if(matchMedia("(min-width:1100px) and (min-resolution:1dppx)").matches&&!(navigator.connection&&navigator.connection.saveData)){const t=v.currentTime;v.src="assets/reel/showreel-1080.mp4";v.load();if(t)v.currentTime=t}
+let inView=true,want=!red;
+const sync=()=>{if(want&&inView&&!document.hidden){const p=v.play();if(p)p.catch(()=>{})}else v.pause()};
+if(red){v.removeAttribute("autoplay");v.pause();lbl.textContent="הפעלת השואוריל"}
+new IntersectionObserver(e=>{inView=e[0].isIntersecting;sync()},{threshold:.1}).observe(hero);
+document.addEventListener("visibilitychange",sync);
+btn.hidden=false;
+btn.addEventListener("click",()=>{
+ const on=btn.getAttribute("aria-pressed")!=="true";
+ v.muted=!on;btn.setAttribute("aria-pressed",String(on));
+ if(on){want=true;sync()}else if(red){want=false;sync()}
+ lbl.textContent=on?"השתקה":(red?"הפעלת השואוריל":"סאונד");
+});
+/* הטיימקוד עוקב אחרי הסרטון אחרי הפתיח */
+const tk=()=>{if(hero.classList.contains("done")&&!v.paused){const fr=Math.floor(v.currentTime*25);tcEl.textContent="00:00:"+String(Math.floor(fr/25)).padStart(2,"0")+":"+String(fr%25).padStart(2,"0")}requestAnimationFrame(tk)};requestAnimationFrame(tk);
+sync();
 }
 </script>
 </body>
