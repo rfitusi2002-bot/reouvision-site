@@ -336,6 +336,30 @@ footer.site .foot{margin-top:0}
 .match{margin-top:clamp(60px,8vw,110px)}
 @media (max-width:760px){.paths{grid-template-columns:1fr}.title .cta .btn{flex:1 1 auto;justify-content:center}.hero{padding-bottom:84px}}
 
+
+/* עבודות נוספות: רשימה בדסקטופ, "עבדתי עם", קשת */
+.hlist,.hpeek{display:none}
+@media (min-width:1024px) and (hover:hover){
+ #work .reel{display:none}
+ .hlist{display:block;list-style:none;margin:36px var(--g) 0;border-bottom:1px solid var(--rule)}
+ .hrow{display:grid;grid-template-columns:56px 1fr auto;align-items:center;gap:24px;width:100%;padding:22px 0;border-top:1px solid var(--rule);text-align:right;color:var(--paper);transition:opacity .25s,padding .35s cubic-bezier(.2,.8,.2,1)}
+ .hrow .n{font-size:14px;color:var(--mute);font-variant-numeric:tabular-nums}
+ .hrow .t{font-size:clamp(34px,3.6vw,58px);font-weight:800;line-height:1.05}
+ .hrow .k{font-size:15px;color:var(--mute);white-space:nowrap}
+ .hlist.hov .hrow{opacity:.35}
+ .hlist.hov .hrow.cur{opacity:1;padding-right:14px}
+ .hrow:focus-visible{opacity:1}
+ .hpeek{display:block;position:fixed;left:0;top:0;z-index:5;width:min(30vw,440px);aspect-ratio:16/9;border-radius:6px;overflow:hidden;pointer-events:none;opacity:0;scale:.86;transition:opacity .25s,scale .35s cubic-bezier(.2,.8,.2,1);background:#211A36}
+ .hpeek.on{opacity:1;scale:1}
+ .hpeek img{width:100%;height:100%;object-fit:cover;display:block}
+}
+.track li{transition:transform .12s linear;will-change:transform}
+.worked{margin:clamp(72px,9vw,130px) var(--g) 0;padding-top:28px;border-top:1px solid var(--rule)}
+.wlbl{font-size:15px;font-weight:600;color:#A99BF0}
+.wnames{list-style:none;display:flex;flex-wrap:wrap;align-items:center;gap:clamp(18px,2.6vw,44px) clamp(28px,4vw,64px);margin-top:26px}
+.wnames li{font-size:clamp(28px,3.4vw,54px);color:var(--paper);line-height:1}
+.wnames li:nth-child(even){color:#A99BF0}
+@media (prefers-reduced-motion:reduce){.hpeek,.hrow{transition:none!important}.track li{transform:none!important}}
 </style>
 <noscript><style>.title{opacity:1}.title h1 .ch,.title .row,.title .cta,.rv>*{transform:none!important;opacity:1!important}.rise{opacity:1!important;transform:none!important}#shots,.tcode,.sound{display:none}.hero .frame{display:none}</style></noscript>
 </head>
@@ -371,9 +395,15 @@ footer.site .foot{margin-top:0}
   </article>
   <div class="feat" id="feat"></div>
   <div class="selrow"><h2 class="sel rv"><span><svg class="ol" viewBox="0 -800 6712 1040" style="--ar:6.4538" role="img" aria-label="עבודות נוספות" fill="currentColor"><path d="M6493 -610V-394C6493 -258 6464 -184 6398 -148C6386 -191 6370 -241 6354 -289L6239 -610H6072L6246 -112L6095 -88L6086 39L6322 3C6567 -34 6656 -158 6656 -403V-610ZM5442 0H6008L6011 -125H5934C5931 -162 5931 -207 5931 -261V-378C5931 -523 5850 -610 5693 -610H5444L5441 -485H5649C5737 -485 5768 -454 5768 -368V-208C5768 -184 5770 -150 5772 -125H5442ZM5172 0H5335V-610H5172ZM4832 0H4995V-485H5081L5084 -610H4506V-485H4832ZM4256 0H4419V-610H4256ZM3560 12C3685 12 3744 -48 3744 -180V-340C3744 -389 3743 -438 3747 -485H3849C3927 -485 3961 -453 3961 -376V0H4124V-378C4124 -530 4035 -610 3889 -610H3475V-485H3584C3582 -461 3581 -426 3581 -403V-199C3581 -141 3559 -115 3517 -115C3507 -115 3498 -117 3485 -120L3477 2C3498 7 3524 12 3560 12ZM2799 0H3128V-400C3128 -526 3085 -610 2911 -610H2803L2799 -485H2880C2945 -485 2966 -464 2966 -392V-237C2967 -187 2969 -150 2971 -125H2799ZM2530 0H2693V-610H2530ZM2080 -610H1781V-303C1780 -102 1908 13 2098 13C2293 13 2418 -102 2418 -305C2418 -508 2295 -610 2080 -610ZM2100 -114C2008 -114 1944 -175 1944 -302V-410C1944 -426 1943 -454 1942 -485H2079C2192 -485 2255 -433 2255 -300C2255 -175 2192 -114 2100 -114ZM1369 -212 1363 -329C1352 -327 1344 -327 1339 -327C1274 -327 1249 -369 1249 -411C1249 -463 1293 -497 1368 -497C1474 -497 1523 -420 1523 -309C1523 -129 1389 -125 1329 -125H1145L1141 0H1349C1574 0 1687 -117 1687 -302C1687 -495 1562 -622 1367 -622C1195 -622 1087 -530 1087 -402C1087 -293 1160 -208 1314 -208C1331 -208 1351 -209 1369 -212ZM815 0H978V-610H815ZM119 12C244 12 303 -48 303 -180V-340C303 -389 302 -438 306 -485H408C486 -485 520 -453 520 -376V0H683V-378C683 -530 594 -610 448 -610H34V-485H143C141 -461 140 -426 140 -403V-199C140 -141 118 -115 76 -115C66 -115 57 -117 44 -120L36 2C57 7 83 12 119 12Z"/></svg></span></h2><div class="filters" id="filters" role="group" aria-label="סינון"></div></div>
+  <ol class="hlist" id="hlist" aria-label="עבודות"></ol>
+  <div class="hpeek" id="hpeek" aria-hidden="true"><img alt=""></div>
   <div class="reel">
    <ul class="track" id="track" aria-label="עבודות"></ul>
    <div class="nav"><span class="count" id="count"></span><div class="arrows"><button id="prev" aria-label="הקודם">→</button><button id="next" aria-label="הבא">←</button></div></div>
+  </div>
+  <div class="worked rv-in">
+   <h2 class="wlbl" id="worked-h">עבדתי עם</h2>
+   <ul class="wnames" aria-labelledby="worked-h"><li><svg class="ol" viewBox="0 -800 3050 1040" style="--ar:2.9327" role="img" aria-label="כאן 11" fill="currentColor"><path d="M2530 0H2669C2879 0 3012 -98 3012 -301C3012 -514 2885 -610 2669 -610H2540L2537 -485H2643C2784 -485 2846 -441 2846 -304C2846 -172 2780 -125 2643 -125H2533ZM2282 -241C2366 -286 2423 -365 2423 -471V-610H2261V-469C2261 -403 2242 -355 2205 -327C2184 -361 2155 -406 2141 -426L2000 -610H1811L1978 -395C1898 -348 1845 -272 1845 -169V0H2007V-171C2007 -233 2024 -279 2056 -308L2118 -211L2272 0H2461ZM1537 211H1700V-610H1537ZM1034 0V-698H888L670 -545L745 -437L781 -464C818 -492 856 -524 873 -540H875C873 -503 871 -406 871 -347V0ZM430 0V-698H284L66 -545L141 -437L177 -464C214 -492 252 -524 269 -540H271C269 -503 267 -406 267 -347V0Z"/></svg></li><li><svg class="ol" viewBox="0 -800 3605 1040" style="--ar:3.4663" role="img" aria-label="ערוץ 14" fill="currentColor"><path d="M3386 -610V-394C3386 -258 3357 -184 3291 -148C3279 -191 3263 -241 3247 -289L3132 -610H2965L3139 -112L2988 -88L2979 39L3215 3C3460 -34 3549 -158 3549 -403V-610ZM2697 0H2860V-378C2860 -530 2770 -610 2624 -610H2363V-485H2585C2662 -485 2697 -453 2697 -376ZM2113 0H2276V-610H2113ZM1851 -610V-427C1851 -343 1816 -293 1741 -263C1734 -289 1723 -327 1709 -370L1629 -610H1465L1734 211H1897L1780 -151C1932 -195 2012 -281 2012 -427V-610ZM1091 -256V-698H905L619 -265V-138H939V0H1091V-138H1187V-256ZM943 -335V-256H752L837 -390C858 -423 914 -515 946 -575H948C944 -493 943 -394 943 -335ZM430 0V-698H284L66 -545L141 -437L177 -464C214 -492 252 -524 269 -540H271C269 -503 267 -406 267 -347V0Z"/></svg></li><li><svg class="ol" viewBox="0 -800 4960 1040" style="--ar:4.7692" role="img" aria-label="One Sport" fill="currentColor"><path d="M4556 -517V-406H4655V-184C4655 -51 4711 7 4839 7C4872 7 4910 3 4940 -5L4936 -115C4920 -110 4901 -108 4883 -108C4819 -108 4808 -150 4808 -204V-406H4932V-517H4808V-680L4660 -630V-517ZM4336 -411H4334C4334 -440 4331 -496 4329 -517H4185C4189 -474 4190 -418 4190 -363V0H4349V-197C4349 -333 4389 -398 4480 -398C4499 -398 4516 -396 4533 -390L4537 -523C4523 -528 4505 -530 4487 -530C4409 -530 4362 -486 4336 -411ZM3808 -530C3632 -530 3519 -425 3519 -257C3519 -95 3634 13 3805 13C3976 13 4091 -94 4091 -257C4091 -423 3977 -530 3808 -530ZM3805 -419C3880 -419 3928 -358 3928 -259C3928 -162 3879 -100 3805 -100C3732 -100 3683 -163 3683 -259C3683 -356 3732 -419 3805 -419ZM3051 -435H3049C3049 -461 3047 -496 3045 -517H2894C2898 -474 2899 -413 2899 -359V211H3057V47C3057 17 3056 -56 3054 -76H3056C3090 -19 3143 12 3219 12C3356 12 3447 -100 3447 -264C3447 -425 3361 -530 3226 -530C3147 -530 3097 -499 3051 -435ZM3173 -410C3243 -410 3286 -353 3286 -262C3286 -168 3244 -106 3172 -106C3100 -106 3053 -169 3053 -259C3053 -347 3101 -410 3173 -410ZM2751 -557 2762 -686C2706 -704 2649 -710 2583 -710C2429 -710 2316 -635 2316 -501C2316 -399 2380 -342 2497 -299C2597 -262 2628 -237 2628 -192C2628 -141 2580 -114 2510 -114C2461 -114 2398 -126 2335 -155L2321 -17C2383 3 2448 13 2519 13C2689 13 2795 -71 2795 -209C2795 -315 2733 -374 2606 -420C2507 -457 2484 -478 2484 -517C2484 -562 2531 -587 2600 -587C2645 -587 2693 -579 2751 -557ZM1625 -215H1978C1979 -222 1980 -244 1980 -252C1980 -440 1894 -530 1741 -530C1578 -530 1469 -419 1469 -260C1469 -87 1587 13 1763 13C1832 13 1895 0 1939 -22L1936 -140C1888 -113 1836 -100 1781 -100C1687 -100 1629 -147 1625 -215ZM1838 -313H1624C1632 -386 1680 -424 1737 -424C1799 -424 1838 -390 1838 -313ZM1001 -429H999C999 -456 997 -495 995 -517H847C851 -455 852 -400 852 -353V0H1008V-228C1008 -273 1014 -314 1029 -344C1048 -380 1081 -404 1127 -404C1203 -404 1215 -345 1215 -247V0H1371V-306C1371 -446 1310 -530 1178 -530C1104 -530 1039 -489 1001 -429ZM399 -710C179 -710 44 -580 44 -350C44 -123 180 13 389 13C603 13 741 -123 741 -351C741 -574 605 -710 399 -710ZM390 -587C499 -587 569 -498 569 -346C569 -202 498 -110 394 -110C288 -110 217 -201 217 -346C217 -495 286 -587 390 -587Z"/></svg></li><li><svg class="ol" viewBox="0 -800 3034 1040" style="--ar:2.9173" role="img" aria-label="יד ושם" fill="currentColor"><path d="M2807 -224 2970 -271V-610H2807ZM2477 0H2640V-485H2726L2729 -610H2151V-485H2477ZM1646 0H1809V-610H1646ZM1354 -610V-322C1354 -191 1281 -116 1148 -116C1065 -116 1006 -145 973 -198C1135 -223 1240 -331 1240 -506C1240 -530 1238 -574 1236 -610H1074C1077 -570 1079 -530 1079 -504C1079 -372 1032 -307 943 -292C942 -301 942 -312 942 -322V-610H780V-322C780 -119 920 13 1148 13C1375 13 1516 -119 1516 -322V-610ZM72 0H668V-378C668 -530 578 -610 432 -610H72ZM235 -125V-485H393C470 -485 505 -453 505 -376V-125Z"/></svg></li><li><svg class="ol" viewBox="0 -800 8532 1040" style="--ar:8.2038" role="img" aria-label="אוניברסיטת אריאל" fill="currentColor"><path d="M8316 -241C8400 -286 8457 -365 8457 -471V-610H8295V-469C8295 -403 8276 -355 8239 -327C8218 -361 8189 -406 8175 -426L8034 -610H7845L8012 -395C7932 -348 7879 -272 7879 -169V0H8041V-171C8041 -233 8058 -279 8090 -308L8152 -211L8306 0H8495ZM7571 0H7734V-610H7571ZM7110 0H7439V-400C7439 -526 7396 -610 7222 -610H7114L7110 -485H7191C7256 -485 7277 -464 7277 -392V-237C7278 -187 7280 -150 7282 -125H7110ZM6851 -224 7014 -271V-610H6851ZM6204 0H6770L6773 -125H6696C6693 -162 6693 -207 6693 -261V-378C6693 -523 6612 -610 6455 -610H6206L6203 -485H6411C6499 -485 6530 -454 6530 -368V-208C6530 -184 6532 -150 6534 -125H6204ZM5950 0H6113V-378C6113 -530 6023 -610 5877 -610H5616V-485H5838C5915 -485 5950 -453 5950 -376ZM5227 -610H4928V-303C4927 -102 5055 13 5245 13C5440 13 5565 -102 5565 -305C5565 -508 5442 -610 5227 -610ZM5247 -114C5155 -114 5091 -175 5091 -302V-410C5091 -426 5090 -454 5089 -485H5226C5339 -485 5402 -433 5402 -300C5402 -175 5339 -114 5247 -114ZM4645 -224 4808 -271V-610H4645ZM4226 13C4420 13 4543 -101 4543 -318C4543 -520 4440 -622 4276 -622C4246 -622 4211 -618 4189 -613L4185 -483C4204 -489 4224 -494 4252 -494C4336 -494 4379 -443 4379 -320C4379 -178 4321 -115 4226 -115C4131 -115 4067 -178 4067 -303V-610H3905V-303C3905 -101 4033 13 4226 13ZM3226 12C3351 12 3410 -48 3410 -180V-340C3410 -389 3409 -438 3413 -485H3515C3593 -485 3627 -453 3627 -376V0H3790V-378C3790 -530 3701 -610 3555 -610H3141V-485H3250C3248 -461 3247 -426 3247 -403V-199C3247 -141 3225 -115 3183 -115C3173 -115 3164 -117 3151 -120L3143 2C3164 7 3190 12 3226 12ZM2636 -241C2720 -286 2777 -365 2777 -471V-610H2615V-469C2615 -403 2596 -355 2559 -327C2538 -361 2509 -406 2495 -426L2354 -610H2165L2332 -395C2252 -348 2199 -272 2199 -169V0H2361V-171C2361 -233 2378 -279 2410 -308L2472 -211L2626 0H2815ZM1907 0H2070V-378C2070 -530 1980 -610 1834 -610H1573V-485H1795C1872 -485 1907 -453 1907 -376ZM1333 -224 1496 -271V-610H1333ZM1053 -241C1137 -286 1194 -365 1194 -471V-610H1032V-469C1032 -403 1013 -355 976 -327C955 -361 926 -406 912 -426L771 -610H582L749 -395C669 -348 616 -272 616 -169V0H778V-171C778 -233 795 -279 827 -308L889 -211L1043 0H1232ZM137 0H304L515 -481V-610H193V-756H30V-485H353Z"/></svg></li></ul>
   </div>
  </section>
 
@@ -464,6 +494,7 @@ const render=()=>{
  const list=works.map((w,i)=>({w,i})).filter(x=>x.i>2&&(cat==="הכול"||catOf(x.w)===cat));
  track.innerHTML=list.map(({w,i})=>`<li><button class="card" data-i="${i}"><span class="ph" style="--c:${w.c}">${img(w)}<span class="play"></span></span><span class="meta"><span class="t">${TOL[w.t]||w.t}${w.en?`<span class="en">${w.en}</span>`:""}</span><span class="k">${w.k} · ${w.r}</span></span></button></li>`).join("");
  track.querySelectorAll(".card").forEach((c,j)=>c.querySelector(".ph").insertAdjacentHTML("beforeend",`<span class="num en">${String(j+1).padStart(2,"0")}</span>`));
+ $("hlist").innerHTML=list.map(({w,i},j)=>`<li><button class="hrow" data-i="${i}" data-img="${thumb(w)}"><span class="n en">${String(j+1).padStart(2,"0")}</span><span class="t">${TOL[w.t]||w.t}</span><span class="k">${w.k} · ${w.r}</span></button></li>`).join("");
  track.scrollLeft=0;track.classList.remove("swap");void track.offsetWidth;track.classList.add("swap");upd();};
 $("filters").onclick=e=>{const b=e.target.closest("button");if(!b)return;cat=b.textContent;
  [...$("filters").children].forEach(x=>x.setAttribute("aria-pressed",x===b));render()};
@@ -484,6 +515,25 @@ addEventListener("pointerup",()=>{if(!down)return;down=null;track.classList.remo
  if(moved){const k=Math.round(pos()/step());track.scrollTo({left:-k*step(),behavior:"smooth"})}});
 track.addEventListener("keydown",e=>{if(e.key==="ArrowLeft"){e.preventDefault();$("next").click()}if(e.key==="ArrowRight"){e.preventDefault();$("prev").click()}});
 render();
+
+/* ---- עבודות נוספות: רשימה עם תמונה שעוקבת אחרי העכבר (דסקטופ), וקשת לקרוסלה ---- */
+{
+const hl=$("hlist"),pk=$("hpeek"),pi=pk.querySelector("img"),rm=matchMedia("(prefers-reduced-motion:reduce)");
+let tx=0,ty=0,x=0,y=0,on=false,raf=0;
+const loop=()=>{x+=(tx-x)*(rm.matches?1:.18);y+=(ty-y)*(rm.matches?1:.18);pk.style.transform=`translate(${x}px,${y}px) translate(calc(-100% - 48px),-50%) rotate(${on?-3:0}deg)`;raf=on||Math.abs(tx-x)>.5?requestAnimationFrame(loop):0};
+hl.addEventListener("pointermove",e=>{tx=e.clientX;ty=e.clientY;if(!raf)raf=requestAnimationFrame(loop)});
+hl.addEventListener("pointerover",e=>{const b=e.target.closest(".hrow");if(!b)return;if(pi.getAttribute("src")!==b.dataset.img){pi.src=b.dataset.img}
+ if(!on){x=tx=e.clientX;y=ty=e.clientY}on=true;pk.classList.add("on");hl.classList.add("hov");hl.querySelectorAll(".hrow").forEach(r=>r.classList.toggle("cur",r===b));if(!raf)raf=requestAnimationFrame(loop)});
+hl.addEventListener("pointerleave",()=>{on=false;pk.classList.remove("on");hl.classList.remove("hov")});
+pi.addEventListener("error",()=>{if(/maxres/.test(pi.src))pi.src=pi.src.replace("maxresdefault","hqdefault")});
+hl.addEventListener("click",e=>{const b=e.target.closest(".hrow");if(b)open(+b.dataset.i)});
+/* קשת: הכרטיס הפעיל ישר, הבאים אחריו נוטים לאחור כמו סרט */
+const curve=()=>{if(rm.matches)return;const tr=track.getBoundingClientRect(),pad=parseFloat(getComputedStyle(track).paddingRight)||0,edge=tr.right-pad;
+ track.querySelectorAll("li").forEach(li=>{const r=li.getBoundingClientRect(),d=Math.max(-2,Math.min(1,(r.right-edge)/r.width));
+  li.style.transform=d?`perspective(1600px) rotateY(${(d*11).toFixed(2)}deg) scale(${(1-Math.abs(d)*.05).toFixed(3)})`:"";li.style.transformOrigin=d<0?"right center":"left center"})};
+track.addEventListener("scroll",()=>requestAnimationFrame(curve),{passive:true});addEventListener("resize",curve);
+new MutationObserver(()=>requestAnimationFrame(curve)).observe(track,{childList:true});curve();
+}
 
 const dlg=$("dlg");
 const open=i=>{const w=works[i];
